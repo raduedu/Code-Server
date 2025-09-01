@@ -2,6 +2,8 @@
 using namespace std;
 
 int main() {
-	cout << "Hello world!" << endl<<endl;
+	int n;
+	cin >> n;
+	cout << n<<" Hello world!\n\n";
 	return 0;
 }
