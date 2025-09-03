@@ -1,3 +1,10 @@
+/*
+Fişierul bac.in conține cel mult 106 numere naturale din intervalul [0,109], separate prin câte un spațiu. Se cere să se afișeze pe ecran, în ordine descrescătoare, cele mai mari două numere de două cifre distincte care NU se află în fişier. Numerele afişate sunt separate printr-un spațiu, iar dacă nu există două astfel de numere, se afişează pe ecran mesajul nu exista. Proiectați un algoritm eficient din punctul de vedere al timpului de executare.
+Exemplu: dacă fişierul bac. in conține numerele 12 235 123 67 98 6 96 94 123 67 98 100
+se afişează pe ecran, în această ordine, numerele 97 95.
+a. Descrieți în limbaj natural algoritmul proiectat, justificând eficienţa acestuia.
+b. Scrieți programul C/C++ corespunzător algoritmului proiectat.
+*/
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -31,7 +38,7 @@ int main() {
 
 	return 0;
 }
-/*
+/*a)
 Programul este eficient din punct de vedere al memoriei, deoarece nu retine toate numerele din sir, ci doar cele cu 2 cifre.
 Programul este eficient din punct de vedere al timpului de executie, deoarece elementele din sirul initial sunt parcurse o 
 singura data.
