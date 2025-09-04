@@ -1,7 +1,8 @@
 /*
-Fişierul bac.in conține cel mult 106 numere naturale din intervalul [0,109], separate prin câte un spațiu. Se cere să se afișeze pe ecran, în ordine descrescătoare, cele mai mari două numere de două cifre distincte care NU se află în fişier. Numerele afişate sunt separate printr-un spațiu, iar dacă nu există două astfel de numere, se afişează pe ecran mesajul nu exista. Proiectați un algoritm eficient din punctul de vedere al timpului de executare.
-Exemplu: dacă fişierul bac. in conține numerele 12 235 123 67 98 6 96 94 123 67 98 100
-se afişează pe ecran, în această ordine, numerele 97 95.
+Fişierul bac.in conține un șir de cel mult 106 numere întregi din intervalul [-109,109], separate prin câte un spațiu. Cel puțin un număr din şir este pozitiv.
+Se cere să se afișeze pe ecran lungimea maximă a unei secvențe a şirului care fie începe, fie se încheie cu un număr pozitiv. O secvență este formată din termeni aflați pe poziții consecutive în şir, iar lungimea secvenței este egală cu numărul de termeni ai acesteia. Proiectați un algoritm eficient din punctul de vedere al memoriei utilizate și al timpului de executare.
+Exemplu: dacă fișierul conține numerele -15 -7 4 -7 21 -5 -200 -26 52 -24 -7 -9 -20
+pe ecran se afişează 11 (corespunzător secvenței 4 -7 21 -5 -200 -26 52 -24 -7 -9 -20).
 a. Descrieți în limbaj natural algoritmul proiectat, justificând eficienţa acestuia.
 b. Scrieți programul C/C++ corespunzător algoritmului proiectat.
 */
@@ -9,41 +10,50 @@ b. Scrieți programul C/C++ corespunzător algoritmului proiectat.
 #include <fstream>
 using namespace std;
 
-int v[100];
+int v[1000000];
 
 int main() {
 	ifstream fin("bac.in");
-	int nr, a = 0, b = 0;
-
+	int nr, pp = -1, pn = 0, up = -1, un = 0, k = 1; //pozitii: px = primul x; ux = ultimul x; xp = al x-lea pozitiv; xn = al x-lea negativ. 
 	while (fin >> nr) {
-		if (nr >= 10 && nr <= 99)
-			v[nr]++;
+		v[k] = nr;
+		k++;
+	} k = k - 1; //bagam toate elementele in vector si pastram variabila care ne spune cate elemente sunt in total in vector
+
+	//for (int i = 1; i <= k; i++)
+	//	cout << v[i] << " "; //afisam valorile din vector
+
+	for (int i = 1; i <= k; i++) {
+		if (v[i] >= 0 && pp == -1)
+			pp = i;
+		if (v[i] < 0 && pn == 0)
+			pn = i;
+		if (pp != -1 && pn != 0)
+			i = k+1;
 	}
-	for (int i = 98; i >= 10; i--) {
-		if (v[i] == 0 && i % 11 != 0) {
-			if (a == 0)
-				a = i;
-			else {
-				b = i;
-				i = 9;
-			}
-		}
+	//cout << "\nprima val poz este pe pozitia: " << pp << endl;
+	//cout << "prima val NEGATIVA este pe pozitia: " << pn << endl;
+	for (int i = k; i >= 1; i--) {
+		if (v[i] >= 0 && up == -1)
+			up = i;
+		if (v[i] < 0 && un == 0)
+			un = i;
+		if (up != -1 && un != 0)
+			i = 0;
 	}
-	if (a * b == 0)
-		cout << "Nu exista";
-	else
-		cout << a << " " << b;
+	//cout << "ULTIMA val poz este pe pozitia: " << up << endl;
+	//cout << "ULTIMA val NEGATIVA este pe pozitia: " << un << endl;
+	if ((up - pn) + 1 >= (un - pp) + 1)
+		cout << (up - pn) + 1 << " [pn, up]";
+	else cout << (un - pp) + 1 << " [pp, un]";
+	cout << " este lungimea maxima";
+
 
 	fin.close();
-
 	return 0;
 }
-/*a)
-Programul este eficient din punct de vedere al memoriei, deoarece nu retine toate numerele din sir, ci doar cele cu 2 cifre.
-Programul este eficient din punct de vedere al timpului de executie, deoarece elementele din sirul initial sunt parcurse o 
-singura data.
 
-Programul retine intr-un vector de frecventa elementele de 2 cifre, care este apoi parcurs si sunt determinate cele mai mari doua 
-numere care indeplinesc conditiile din enunt. De asemenea, am luat in calcul cazul in care nu exista cel putin doua numere care nu
-indeplinesc conditia.
+/*
+Programul este eficient din punct de vedere al memoriei, deoarece retine doar elementele din tabloul unidimensional si pe cele absolut necesare (primul/ultimul pozitiv/negativ + un contor pentru a stii cate elemente sunt in tablou)
+Programul este eficient din punct de vedere al timpului de executie, deoarece elementele sirului sunt complet parcurse o singura data, 
 */
