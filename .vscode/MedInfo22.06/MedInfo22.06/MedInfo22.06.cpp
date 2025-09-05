@@ -1,10 +1,19 @@
 /*
-Două numere naturale sunt numite z-prietene dacă au aceeași cifră a zecilor.
-Fişierul bac.in conține un șir de cel mult 10^6 numere naturale din intervalul [10,10^9], separate prin câte un spațiu.
-Se cere să se afișeze pe ecran pozițiile din şir pe care se află termeni precedați de un număr maxim de valori z-prietene cu ei.
-Numerele afișate sunt separate prin câte un spațiu. Proiectați un algoritm eficient din punctul de vedere al timpului de executare.
-Exemplu: dacă fișierul conţine numerele 726 358 98 157 20 49 128 879 659 271
-pe ecran se afișează numerele 7 9 (termenii 128, respectiv 659 respectă proprietatea cerută).
+Fişierele bac1.txt și bac2.txt conţin numere naturale din intervalul [1,10^5]: fişierul bac1.txt
+conține pe prima linie un număr n1, iar pe a doua linie un șir de n1 numere, iar fișierul bac2.txt
+conține pe prima linie un număr n2, iar pe a doua linie un șir de n2 numere. Numerele aflate pe
+aceeași linie a unui fișier sunt ordonate crescător și sunt separate prin câte un spațiu.
+Se cere să se afișeze pe ecran, în ordine crescătoare, separate prin câte un spațiu, numerele divizibile
+cu 5 care se găsesc doar în unul dintre şirurile aflate în cele două fișiere. Dacă nu există niciun astfel de
+număr, se afișează pe ecran mesajul nu exista. Proiectați un algoritm eficient din punctul de vedere
+al memoriei utilizate şi al timpului de executare.
+Exemplu: dacă fişierul bac1.txt conţine numerele
+7
+1 2 3 4 5 7 20 60
+iar fişierul bac2.txt conţine numerele
+9
+3 5 7 8 9 10 12 20 24
+pe ecran se afișează, în această ordine, numerele 5 10 60.
 a. Descrieți în limbaj natural algoritmul proiectat, justificând eficienţa acestuia.
 b. Scrieți programul C/C++ corespunzător algoritmului proiectat.
 */
@@ -12,57 +21,85 @@ b. Scrieți programul C/C++ corespunzător algoritmului proiectat.
 #include <fstream>
 using namespace std;
 
-int f[10], v[1000001];
-
 int main() {
-    ifstream fin("bac.in");
-    int x, n = 0, max = -1;
+    ifstream f1("bac1.txt");
+    ifstream f2("bac2.txt");
 
-    while (fin >> x) {
-        n++;
-        v[n] = x;
-    }
+    int n1, n2, x, y, ok = 0;
+    f1 >> n1;
+    f2 >> n2;
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 0; j < 10; j++)
-            f[j] = 0;
+    f1 >> x;
+    f2 >> y;
 
-        for (int j = 1; j < i; j++) {
-            int cz = (v[j] / 10) % 10;
-            f[cz]++;
+    while (n1 > 0 && n2 > 0) {
+        if (x < y) {
+            if (x % 5 == 0) {
+                cout << x << " ";
+                ok = 1;
+            }
+            n1--;
+            if (n1 > 0)
+                f1 >> x;
         }
-
-        int cz = (v[i] / 10) % 10;
-        if (f[cz] > max)
-            max = f[cz];
-    }
-
-    for (int i = 1; i <= n; i++) {
-        for (int j = 0; j < 10; j++)
-            f[j] = 0;
-
-        for (int j = 1; j < i; j++) {
-            int cz = (v[j] / 10) % 10;
-            f[cz]++;
+        else if (x > y) {
+            if (y % 5 == 0) {
+                cout << y << " ";
+                ok = 1;
+            }
+            n2--;
+            if (n2 > 0)
+                f2 >> y;
         }
-
-        int cz = (v[i] / 10) % 10;
-        if (f[cz] == max && max > 0)
-            cout << i << " ";
+        else {
+            n1--;
+            n2--;
+            if (n1 > 0)
+                f1 >> x;
+            if (n2 > 0)
+                f2 >> y;
+        }
     }
 
-    fin.close();
+    while (n1 > 0) {
+        if (x % 5 == 0) {
+            cout << x << " ";
+            ok = 1;
+        }
+        n1--;
+        if (n1 > 0)
+            f1 >> x;
+    }
+
+    while (n2 > 0) {
+        if (y % 5 == 0) {
+            cout << y << " ";
+            ok = 1;
+        }
+        n2--;
+        if (n2 > 0)
+            f2 >> y;
+    }
+
+    if (ok == 0)
+        cout << "nu exista";
+
+    f1.close();
+    f2.close();
+
     return 0;
 }
 
 /*a)
-Programul este eficient din punct de vedere al memoriei, deoarece foloseste un vector de frecventa de doar 10 elemente pentru
-cifrele zecilor, plus vectorul care stocheaza numerele citite.
-Programul este eficient din punct de vedere al timpului de executie, deoarece parcurge sirul de doua ori complet, cu parcurgeri
-partiale pentru fiecare element.
+Programul este eficient din punct de vedere al memoriei, deoarece nu stocheaza sirurile in tablouri unidimensionale, ci citeste
+cate un element din fiecare fisier la un moment dat.
+Programul este eficient din punct de vedere al timpului de executie, deoarece parcurge fiecare sir o singura data,
+profitand de faptul ca numerele sunt deja sortate crescator.
 
-Programul citeste toate numerele si le stocheaza intr-un vector. Pentru fiecare element, numara cate numere z-prietene
-(cu aceeasi cifra a zecilor) se afla inaintea sa folosind vectorul de frecventa. Determina valoarea maxima a numarului
-de z-prietene precedente, apoi parcurge din nou sirul si afiseaza pozitiile elementelor care au exact acel numar maxim
-de z-prietene inaintea lor. Cifra zecilor se obtine prin formula (numar / 10) % 10.
+Programul foloseste tehnica de interclasare pentru a parcurge simultan cele doua siruri sortate. Compara elementul
+curent din primul fisier cu elementul curent din al doilea fisier. Daca sunt diferite, elementul mai mic este
+unic in sirul sau, deci il verifica daca este divizibil cu 5 si il afiseaza daca da. Daca elementele sunt egale,
+le sare pe ambele deoarece nu sunt unice. Programul executa acest proces pana cand unul dintre siruri se termina, apoi
+verifica elementele ramase din celalalt sir. Variabila ok verifica daca s-a afisat cel putin un numar pentru
+a putea afisa mesajul "nu exista" daca este cazul.
 */
