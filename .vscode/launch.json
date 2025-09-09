@@ -5,10 +5,10 @@
       "name": "Run (lldb)",
       "type": "lldb",
       "request": "launch",
+      "preLaunchTask": "build active file (g++)",
       "program": "${fileDirname}/${fileBasenameNoExtension}",
-      "args": [],
-      "cwd": "${workspaceFolder}",
-      "preLaunchTask": "build active file (g++)"
+      "args": ["bac.in"],
+      "cwd": "${fileDirname}"
     }
   ]
 }

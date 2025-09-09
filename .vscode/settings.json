@@ -55,5 +55,12 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+
+  // --- Code Runner tweaks ---
+  "code-runner.runInTerminal": true,
+  "code-runner.fileDirectoryAsCwd": true,
+  "code-runner.executorMapByFileExtension": {
+    ".cpp": "bash -lc 'g++ -std=c++20 -g \"$file\" -o \"$fileDirname/$fileBasenameNoExtension\" && cd \"$fileDirname\" && \"./$fileBasenameNoExtension\"; printf \"\\n\"'"
+  }
 }
