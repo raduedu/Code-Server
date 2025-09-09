@@ -8,7 +8,11 @@
       "preLaunchTask": "build active file (g++)",
       "program": "${fileDirname}/${fileBasenameNoExtension}",
       "args": ["bac.in"],
-      "cwd": "${fileDirname}"
+      "cwd": "${fileDirname}",
+
+      // 👇 add these two lines
+      "initCommands": ["settings set target.disable-aslr false"],
+      "terminal": "integrated"
     }
   ]
 }
