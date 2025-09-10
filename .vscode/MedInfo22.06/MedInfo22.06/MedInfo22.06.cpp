@@ -1,4 +1,4 @@
-/*
+/* test 11 2021 - III - 3 - a)
 Fişierul bac. txt conține un șir de cel mult 10^5 numere naturale din intervalul [1,10^9], separate prin câte un spaţiu.
 Se cere să se afişeze pe ecran cea mai mică poziţie pe care ar putea-o ocupa primul termen al şirului aflat în fişier în şirul format cu aceleași valori, ordonat crescător. 
 Proiectați un algoritm eficient din punctul de vedere al memoriei utilizate şi al timpului de executare.
