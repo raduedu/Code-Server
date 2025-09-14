@@ -4,13 +4,10 @@
     {
       "label": "build active file (g++)",
       "type": "shell",
-      "command": "g++",
+      "command": "bash",
       "args": [
-        "-std=c++20",
-        "-g",
-        "${file}",
-        "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
+        "-lc",
+        "cd \"${fileDirname}\" && g++ -std=c++20 -g \"${fileBasename}\" -o app && echo \"Built: ${fileDirname}/app\""
       ],
       "group": { "kind": "build", "isDefault": true },
       "problemMatcher": {
@@ -26,7 +23,8 @@
             "message": 5
           }
         ]
-      }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
     }
   ]
 }

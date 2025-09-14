@@ -2,15 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run (lldb)",
+      "name": "Run (lldb, g++)",
       "type": "lldb",
       "request": "launch",
       "preLaunchTask": "build active file (g++)",
-      "program": "${fileDirname}/${fileBasenameNoExtension}",
-      "args": ["bac.in"],
+      "program": "${fileDirname}/app",
+      "args": [],
       "cwd": "${fileDirname}",
-
-      // 👇 add these two lines
       "initCommands": ["settings set target.disable-aslr false"],
       "terminal": "integrated"
     }
