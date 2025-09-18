@@ -1,35 +1,21 @@
 #include <iostream> 
+#include <cstring>
+#include <cctype>
 using namespace std;
 
-int a[101][101];
-
 int main() {
-	int n = 0, m = 0, nr1 = 0, nr2 = 0;
-	cin >> n >> m;
+	int n;
+	char c[256];
+	cin.getline(c,256);
+	n = strlen(c);
+	cout << (char)toupper(c[0]);
+	for (int i = 1; i <= n - 1; i++) {
+		if (c[i - 1] == ' ' || c[i + 1] == ' ' || c[i+1] == 0 || c[i - 1] == 0) //c[i+1] sau c[i-1] == 0 (null) este necesar? exista alta scriere mai buna?
+			cout << (char)toupper(c[i]); //daca nu pun (char) inainte imi converteste char-ul in valoare int ASCII
+		else cout << c[i];
+
+	}
 	
-	for (int i = 1; i <= n; i++) {
-		for (int j = 1; j <= m; j++) {
-			if (j <= 9)
-				nr1 = i * 10 + j;
-			else
-				nr1 = i * 100 + j;
-			if (i <= 9)
-				nr2 = j * 10 + i;
-			else
-				nr2 = j * 100 + i;
-			if (nr1 > nr2)
-				a[i][j] = nr2;
-			else
-				a[i][j] = nr1;
-		}
-	}
-
-	for (int i = 1; i <= n; i++) {
-		for (int j = 1; j <= m; j++) {
-			cout << a[i][j] << " ";
-		}
-		cout << endl;
-	}
-
+	cout << endl;
 	return 0;
 }
