@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cctype>
 using namespace std;
-//yea, no risk - max
+//no risk, full push
 int main() {
 	int l = 0, lv = 0, ok = 0, k = 0;
 	char s[103], * p, c;
