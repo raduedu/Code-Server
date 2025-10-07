@@ -11,8 +11,9 @@ int main() {
 	while (p != NULL) {
 		lp = strlen(p);
 		p[0] = toupper(p[0]);
-		for (int i = 1; i < lp; i++) 
+		for (int i = 1; i < lp; i++)
 			p[i] = tolower(p[i]);
+		//test sync
 		
 		cout << p << " ";
 		
