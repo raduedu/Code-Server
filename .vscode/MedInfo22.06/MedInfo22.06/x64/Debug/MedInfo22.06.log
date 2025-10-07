@@ -1,3 +1,4 @@
 ﻿  MedInfo22.06.cpp
-D:\Code-Server Repo\.vscode\MedInfo22.06\MedInfo22.06\MedInfo22.06.cpp(12,14): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Code-Server Repo\.vscode\MedInfo22.06\MedInfo22.06\MedInfo22.06.cpp(10,12): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Code-Server Repo\.vscode\MedInfo22.06\MedInfo22.06\MedInfo22.06.cpp(7,17): warning C4101: 'p': unreferenced local variable
   MedInfo22.06.vcxproj -> D:\Code-Server Repo\.vscode\MedInfo22.06\x64\Debug\MedInfo22.06.exe
