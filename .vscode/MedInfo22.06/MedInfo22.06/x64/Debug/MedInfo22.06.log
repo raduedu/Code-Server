@@ -1,3 +1,4 @@
 ﻿  MedInfo22.06.cpp
-  LINK : D:\Visual Studio\Projects\MedInfo22.06\.vscode\MedInfo22.06\x64\Debug\MedInfo22.06.exe not found or not built by the last incremental link; performing full link
-  MedInfo22.06.vcxproj -> D:\Visual Studio\Projects\MedInfo22.06\.vscode\MedInfo22.06\x64\Debug\MedInfo22.06.exe
+D:\Code-Server Repo\.vscode\MedInfo22.06\MedInfo22.06\MedInfo22.06.cpp(15,14): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Code-Server Repo\.vscode\MedInfo22.06\MedInfo22.06\MedInfo22.06.cpp(17,14): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  MedInfo22.06.vcxproj -> D:\Code-Server Repo\.vscode\MedInfo22.06\x64\Debug\MedInfo22.06.exe
