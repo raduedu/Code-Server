@@ -1,4 +1,2 @@
 ﻿  MedInfo22.06.cpp
-D:\Code-Server Repo\.vscode\MedInfo22.06\MedInfo22.06\MedInfo22.06.cpp(22,13): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Code-Server Repo\.vscode\MedInfo22.06\MedInfo22.06\MedInfo22.06.cpp(26,13): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   MedInfo22.06.vcxproj -> D:\Code-Server Repo\.vscode\MedInfo22.06\x64\Debug\MedInfo22.06.exe
