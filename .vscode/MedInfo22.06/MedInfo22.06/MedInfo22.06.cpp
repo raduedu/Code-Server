@@ -3,38 +3,51 @@
 #include <cctype>
 using namespace std;
 int main() {
-	int l = 0;
-	char c[101], * p, * virgula, rez[500];
+	int l = 0, cnt = 0, ok = 0;
+	char c[101], * p, voc[6], vocdist[6];
 	cin.getline(c, 101);
 
-	strcpy(rez, "");
+	strcpy(voc, "aeiou");
 
 	p = strtok(c, " ");
 	while (p != NULL) {
-		virgula = strchr(p, ',');
+		l = strlen(p);
+		strcpy(vocdist, "");
 
-		if (virgula != NULL)
-			*virgula = '\0';
+		for (int i = 0; i < l; i++) {
+			if (strchr(voc, p[i]) != NULL) {
+				if (strchr(vocdist, p[i]) == NULL) {
+					char temp[2] = { p[i], '\0' };
+					strcat(vocdist, temp);
+				}
+			}
+		}
 
-		if (strlen(rez) > 0)
-			strcat(rez, " ");
-		strcat(rez, p);
+		if (strlen(vocdist) == 1) {
+			cout << p << endl;
+			ok = 1;
+		}
 
 		p = strtok(NULL, " ");
 	}
 
-	cout << rez;
+	if (ok == 0)
+		cout << "nu exista";
 
 	return 0;
 }
-/* TEST 20
-Un text cu cel mult 100 de caractere conține cuvinte și numere, separate prin câte un spațiu. Cuvintele
-sunt formate numai din litere mici ale alfabetului englez, iar numerele sunt reale, pozitive, cu partea
-întreagă și partea zecimală separate prin simbolul virgulă, sau numai cu partea întreagă, ca în exemplu.
-Scrieți un program C/C++ care citește de la tastatură un text de tipul precizat și îl transformă în
-memorie, înlocuind fiecare număr real cu partea întreagă a acestuia.
-Exemplu: pentru textul
-partea intreaga a lui 5,75 este egala cu a lui 5,25 si cu a lui 5 si este 5
-se afișează pe ecran
-partea intreaga a lui 5 este egala cu a lui 5 si cu a lui 5 si este 5
+/* TEST 09 - 2021
+Într-un text cu cel mult 102 caractere, cuvintele sunt formate din litere mici ale alfabetului englez și sunt
+separate prin câte un spațiu. Scrieți un program C/C++ care citește de la tastatură un text de tipul precizat și
+afișează pe ecran, pe linii separate, toate cuvintele sale care conțin o singură vocală distinctă, ca în exemplu.
+Dacă nu există niciun astfel de cuvânt, se afișează pe ecran mesajul nu exista. Se
+consideră vocale literele din mulțimea a, e, i, o, u.
+Exemplu: pentru textul a plantat cinci lalele visinii sau rosii
+se afișează pe ecran, nu neapărat în această ordine, cuvintele alăturate.
+
+cuv alaturate:
+a
+plantat
+cinci
+visinii
 */

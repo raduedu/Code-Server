@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,6 +31,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -69,7 +73,7 @@
               "RelativeDocumentMoniker": "MedInfo22.06\\MedInfo22.06.cpp",
               "ToolTip": "D:\\Code-Server Repo\\.vscode\\MedInfo22.06\\MedInfo22.06\\MedInfo22.06.cpp",
               "RelativeToolTip": "MedInfo22.06\\MedInfo22.06.cpp",
-              "ViewState": "AgIAACUAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACQAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-30T15:45:18.917Z",
               "EditorCaption": ""
