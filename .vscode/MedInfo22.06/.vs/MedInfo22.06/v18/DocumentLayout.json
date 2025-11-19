@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -37,10 +37,6 @@
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "bac.out",
@@ -48,9 +44,10 @@
               "RelativeDocumentMoniker": "MedInfo22.06\\bac.out",
               "ToolTip": "D:\\Code-Server Repo\\.vscode\\MedInfo22.06\\MedInfo22.06\\bac.out",
               "RelativeToolTip": "MedInfo22.06\\bac.out",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-09-30T15:45:18.911Z"
+              "WhenOpened": "2025-09-30T15:45:18.911Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -72,7 +69,7 @@
               "RelativeDocumentMoniker": "MedInfo22.06\\MedInfo22.06.cpp",
               "ToolTip": "D:\\Code-Server Repo\\.vscode\\MedInfo22.06\\MedInfo22.06\\MedInfo22.06.cpp",
               "RelativeToolTip": "MedInfo22.06\\MedInfo22.06.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-30T15:45:18.917Z",
               "EditorCaption": ""

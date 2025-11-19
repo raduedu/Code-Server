@@ -29,3 +29,6 @@ int main() {
 
 	return 0;
 }
+//Programul calculeaza minimul dintre puterea la care apare 2 in descompunerea in factori primi a lui n! si puterea la care apare 13 in factori primi a lui n!
+//Programul este eficient din punct de vedere al memoriei pentru ca stocheaza numarul minim de variabile si nu tine minte n!
+//Programul este eficient din punct de vedere al timpului de executie pentru ca nu il calculeaza pe n!
