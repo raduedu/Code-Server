@@ -1,25 +1,28 @@
 #include <iostream>
 using namespace std;
 
-void Plus(int &n) {
-	int x[10], k = 0;
-	while (n > 0) {
-		x[++k] = n % 10;
-		n = n / 10;
-	}
-	for (int i = k; i >= 2; i--) {
-		if (x[i] == 2 && x[i - 1] == 5)
-			x[i - 1] = 6;
-		n = n * 10 + x[i];
-	}
-	n = n * 10 + x[1];
-}
-
 int main() {
-	int n = 0;
+	int n = 0, a[103][103];
 	cin >> n;
-	Plus(n);
-	cout << endl << n;
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			cin >> a[i][j];
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = n - 1 - i; j < n - 1; j++) {
+			a[i][j] = a[i][j + 1];
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n - 1; j++) {
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
 
 	return 0;
 }
