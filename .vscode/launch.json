@@ -1,16 +1,14 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Run (lldb, g++)",
-      "type": "lldb",
-      "request": "launch",
-      "preLaunchTask": "build active file (g++)",
-      "program": "${fileDirname}/app",
-      "args": [],
-      "cwd": "${fileDirname}",
-      "initCommands": ["settings set target.disable-aslr false"],
-      "terminal": "integrated"
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug (CodeLLDB)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "cwd": "${fileDirname}",
+            "preLaunchTask": "Build with g++"
+        }
+    ]
 }
