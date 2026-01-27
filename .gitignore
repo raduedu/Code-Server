@@ -1,22 +1,11 @@
-# Ignore Visual Studio (Windows) cache
+# Ignore Visual Studio junk
 .vs/
-*.user
+out/
+build/
+*.ipch
+*.db
 *.suo
-*.sln.docstates
+*.user
 
-# Ignore build outputs
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-[Tt]est[Rr]esult*/
-
-# VS Code – DO NOT IGNORE (commit everything)
-# (remove the .vscode/* ignore rules entirely)
-
-# OS noise
-.DS_Store
-Thumbs.db
-
-# Other IDEs
-.idea/
-*.iml
+# Ignore VS Code build files (optional, keeps folders clean)
+.vscode/
