@@ -37,6 +37,7 @@ int main(){
         p = strtok(NULL, " .,!?:;-");
     }
         cout << cuv5 <<endl;
+        //test git
     
 
         
