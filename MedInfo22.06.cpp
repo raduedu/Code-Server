@@ -1,41 +1,37 @@
 #include <iostream>
-#include <cstring>
+#include <fstream>
 using namespace std;
 
+int v[1001];
+
 int main() {
-	int n, l, ok = 1;
-	char c[101][11], s[101], rez[501], *p;
+	ifstream fin("bac.in");
+	int n, ok = 1;
 
-	cin >> n;
-	for (int i = 1; i <= n; i++)
-		cin >> c[i];
+	while (fin >> n)
+		v[n]++;
 
-	cin.ignore();
-	cin.getline(s, 101);
-
-	p = strtok(s, " ");
-	while (p != NULL) {
-		l = strlen(p);
-		if (p[0] == '*') {
-			ok = 0;
-			for (int i = 1; i <= n; i++)
-				if (strlen(c[i]) == l) {
-					strcat(rez, c[i]);
-					strcat(rez, " ");
-					ok = 1;
-					break;
-				}
-		} else {
-			strcat(rez, p);
-			strcat(rez, " ");
-		}
-		p = strtok(NULL, " ");
-	}
+	for (int i = 1; i <= 1000 && ok == 1; i++)
+		if (v[i] > 0)
+			if (v[i] > i || v[i] % 2 != i % 2)
+				ok = 0;
 
 	if (ok == 1)
-		cout << rez;
+		cout << "DA";
 	else
-		cout << "imposibil";
+		cout << "NU";
 
+	fin.close();
 	return 0;
 }
+
+/*
+Programul citeste fiecare numar din fisier si incrementeaza vectorul de frecventa. 
+Apoi parcurge vectorul de frecventa si verifica pentru fiecare valoare care apare daca numarul de aparitii este 
+mai mare decat valoarea sau daca au paritati diferite. Daca gaseste o astfel de valoare, seteaza ok = 0. La final afiseaza DA daca ok = 1, altfel NU.
+
+Programul este eficient din punct de vedere al memoriei, deoarece foloseste un vector de frecventa.
+
+Programul este eficient din punct de vedere al timpului de executie, deoarece parcurge fisierul o singura data si verifica vectorul de frecventa. 
+Complexitatea totala este minima, fiind algoritm liniar.
+*/
