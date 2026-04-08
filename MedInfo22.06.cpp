@@ -1,39 +1,33 @@
 #include <iostream>
-#include <fstream>
+#include <cstring>
 using namespace std;
 
-int prim[10], ultim[10];
-
 int main(){
-    int n, k = 0, max = 0;
-    ifstream fin("secventaincadrata.in");
-    ofstream fout("secventaincadrata.out");
+    char s[401], rez[401], aux[401], *p; //era 201 inainte, Caught Fatal Signal 11, deci am dublat dimensiunile si acum primesc scorul bun
+    int l, ok = 0;
 
-    for (int i = 0; i <= 9; i++)
-        prim[i] = -1;
+    cin.getline(s, 201);
+    strcpy(rez, "");
 
-    while (fin >> n){
-        k++;
-        if (prim[n] == -1)
-            prim[n] = k;
-            
-        ultim[n] = k;
+    p = strtok(s, " ");
+    while (p != NULL){
+        l = strlen(p);
+        if (l % 2 == 0){
+            ok = 1;
+            strcpy(aux, p + l/2);
+            strncat(aux, p, l/2);
+            strcat(rez, aux);
+        } else {
+            strcat(rez, p);
+        }
+        strcat(rez, " ");
+        p = strtok(NULL, " ");
     }
 
-    for (int i = 0; i <= 9; i++){
-        if (prim[i] != -1 && prim[i] != ultim[i])
-            if (ultim[i] - prim[i] + 1 > max)
-                max = ultim[i] - prim[i] + 1;
-    }
-    fout << max << endl;
+    if (ok == 1)
+        cout << rez;
+    else
+        cout << "nu exista";
 
-    for (int i = 0; i <= 9; i++){
-        if (prim[i] != -1 && prim[i] != ultim[i])
-            if (ultim[i] - prim[i] + 1 == max)
-                fout << i << " ";
-    }
-
-    fin.close();
-    fout.close();
     return 0;
 }
