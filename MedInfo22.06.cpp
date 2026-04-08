@@ -1,28 +1,29 @@
 #include <iostream>
 #include <cstring>
-#include <cctype>
 using namespace std;
 
 int main(){
-    char s[256], rez[21], *p;
-    int l, ok, max = 0;
+    char s[101], *p;
+    char *note[7] = {"DO", "RE", "MI", "FA", "SOL", "LA", "SI"};
+    int ok = 0, gasit;
 
-    cin.getline(s, 256);
+    cin.getline(s, 101);
 
-    p = strtok(s, " :;.,");
+    p = strtok(s, " ");
     while (p != NULL){
-        l = strlen(p);
-        ok = 1;
-        for (int i = 0; i < l/2 && ok == 1; i++)
-            if (p[i] != p[l-1-i] && p[i] != p[l-1-i] + 32 && p[i] != p[l-1-i] - 32)
-                ok = 0;
-        if (ok == 1 && l > max){
-            max = l;
-            strcpy(rez, p);
+        gasit = 0;
+        for (int i = 0; i < 7 && gasit == 0; i++)
+            if (strstr(p, note[i]) != NULL)
+                gasit = 1;
+        if (gasit == 1){
+            cout << p << endl;
+            ok = 1;
         }
-        p = strtok(NULL, " :;.,");
+        p = strtok(NULL, " ");
     }
 
-    cout << rez;
+    if (ok == 0)
+        cout << "nu exista";
+
     return 0;
 }
