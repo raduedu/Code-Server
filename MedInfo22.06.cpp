@@ -2,28 +2,36 @@
 #include <fstream>
 using namespace std;
 
-int v[100];
+int prim[10], ultim[10];
 
 int main(){
-    int n, max = 0, k = 0;
-    ifstream fin("bac.in");
-    ofstream fout("bac.out");
+    int n, k = 0, max = 0;
+    ifstream fin("secventaincadrata.in");
+    ofstream fout("secventaincadrata.out");
+
+    for (int i = 0; i <= 9; i++)
+        prim[i] = -1;
 
     while (fin >> n){
-        while (n >= 10){
-            if (n % 100 >= 10)
-                v[n % 100]++;
-            n /= 10;
-        }
+        k++;
+        if (prim[n] == -1)
+            prim[n] = k;
+            
+        ultim[n] = k;
     }
 
-    for (int i = 10; i <= 99; i++)
-        if (v[i] > max)
-            max = v[i];
+    for (int i = 0; i <= 9; i++){
+        if (prim[i] != -1 && prim[i] != ultim[i])
+            if (ultim[i] - prim[i] + 1 > max)
+                max = ultim[i] - prim[i] + 1;
+    }
+    fout << max << endl;
 
-    for (int i = 99; i >= 10; i--)
-        if (v[i] == max)
-            fout << i << " ";
+    for (int i = 0; i <= 9; i++){
+        if (prim[i] != -1 && prim[i] != ultim[i])
+            if (ultim[i] - prim[i] + 1 == max)
+                fout << i << " ";
+    }
 
     fin.close();
     fout.close();
