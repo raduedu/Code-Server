@@ -2,33 +2,28 @@
 #include <fstream>
 using namespace std;
 
-int v[10];
+int v[100];
 
 int main(){
-    int n, c, k = 0;
-    ifstream fin("cifreord1.in");
-    ofstream fout("cifreord1.out");
+    int n, max = 0, k = 0;
+    ifstream fin("bac.in");
+    ofstream fout("bac.out");
 
     while (fin >> n){
-        if (n==0)
-            v[0]++;
-        while (n > 0){
-            c = n % 10;
-            v[c]++;
+        while (n >= 10){
+            if (n % 100 >= 10)
+                v[n % 100]++;
             n /= 10;
         }
     }
 
-    for (int i = 9; i >= 0; i--)
-        while (v[i] > 0){
+    for (int i = 10; i <= 99; i++)
+        if (v[i] > max)
+            max = v[i];
+
+    for (int i = 99; i >= 10; i--)
+        if (v[i] == max)
             fout << i << " ";
-            v[i]--;
-            k++;
-            if (k == 20){
-                fout << endl;
-                k = 0;
-            }
-        }
 
     fin.close();
     fout.close();
